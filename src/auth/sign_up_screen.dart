@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:quitanda/src/components/custom_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+   SignUpScreen({Key? key}) : super(key: key);
+
+  final cpfFormatter = MaskTextInputFormatter(
+    mask: "###.###.###-##",
+    filter: {
+      "#": RegExp(r"[0-9]"),
+    },
+  );  final phoneFormatter = MaskTextInputFormatter(
+    mask: "(##) # ####-####",
+    filter: {
+      "#": RegExp(r"[0-9]"),
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -14,74 +27,96 @@ class SignUpScreen extends StatelessWidget {
         child: SizedBox(
           height: size.height,
           width: size.width,
-          child: Column(
+          child: Stack(
             children: [
-              const Expanded(
-                child: Center(
-                  child: Text(
-                    "CADASTRE-SE",
-                    style: TextStyle(
-                      fontSize: 35,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              //Formulario
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 32,
-                  vertical: 40,
-                ),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(45),
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    CustomTextField(
-                      icon: Icons.email,
-                      label: "Email",
-                    ),
-                    CustomTextField(
-                      icon: Icons.lock,
-                      label: "Senha",
-                      isSecret: true,
-                    ),
-                    CustomTextField(
-                      icon: Icons.person,
-                      label: "Nome",
-                    ),
-                    CustomTextField(
-                      icon: Icons.phone_android,
-                      label: "Celular",
-                    ),
-                    CustomTextField(
-                      icon: Icons.circle,
-                      label: "C.P.F",
-                    ),
-                    SizedBox(
-                      height:50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: const Text(
-                          "CADASTRAR",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
+              Column(
+                children: [
+                  const Expanded(
+                    child: Center(
+                      child: Text(
+                        "CADASTRE-SE",
+                        style: TextStyle(
+                          fontSize: 35,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  ],
+                  ),
+                  //Formulario
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 40,
+                    ),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(45),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        CustomTextField(
+                          icon: Icons.email,
+                          label: "Email",
+                        ),
+                        CustomTextField(
+                          icon: Icons.lock,
+                          label: "Senha",
+                          isSecret: true,
+                        ),
+                        CustomTextField(
+                          icon: Icons.person,
+                          label: "Nome",
+                        ),
+                        CustomTextField(
+                          icon: Icons.phone_android,
+                          label: "Celular",
+                          inputFormatters: [phoneFormatter],
+                        ),
+                        CustomTextField(
+                          icon: Icons.circle,
+                          label: "C.P.F",
+                          inputFormatters: [cpfFormatter],
+                        ),
+                        SizedBox(
+                          height: 50,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: const Text(
+                              "CADASTRAR",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              // navegar para a tela anterior
+              Positioned(
+                top: 10,
+                left: 10,
+                child: SafeArea(
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
             ],
