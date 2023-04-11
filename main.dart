@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Quintanda",
       theme: ThemeData(
-        primarySwatch: Colors.cyan
+        primarySwatch: Colors.cyan,
+        scaffoldBackgroundColor: Colors.white.withAlpha(190),
       ),
       debugShowCheckedModeBanner: false,
       home: SingInScreen(),
