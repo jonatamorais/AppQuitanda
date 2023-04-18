@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda/src/pages/auth/sign_in_screen.dart';
+import 'package:quitanda/src/pages/splash/splash_screen.dart';
 
 
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white.withAlpha(190),
       ),
       debugShowCheckedModeBanner: false,
-      home: SingInScreen(),
+      home: const SingInScreen(),
     );
   }
 }

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:quitanda/src/pages/cart/cart_tab.dart';
 import 'package:quitanda/src/pages/home/home_tab.dart';
 
-
-
 class BaseScreen extends StatefulWidget {
   const BaseScreen({Key? key}) : super(key: key);
 
@@ -25,8 +23,12 @@ class _BaseScreenState extends State<BaseScreen> {
         children: [
           const HomeTab(),
           CartTab(),
-          Container(color: Colors.cyan,),
-          Container(color: Colors.yellow,),
+          Container(
+            color: Colors.cyan,
+          ),
+          Container(
+            color: Colors.yellow,
+          ),
         ],
       ),
 
@@ -37,10 +39,26 @@ class _BaseScreenState extends State<BaseScreen> {
         height: 50,
         buttonBackgroundColor: Colors.cyan,
         items: const <Widget>[
-          Icon(Icons.home_outlined, size: 30),
-          Icon(Icons.person_outline, size: 30),
-          Icon(Icons.shopping_cart_outlined, size: 30),
-          Icon(Icons.list, size: 30),
+          Icon(
+            Icons.home_outlined,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.person_outline,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.shopping_cart_outlined,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.list,
+            size: 30,
+            color: Colors.white,
+          ),
         ],
         index: currentIndex,
         onTap: (index) {
