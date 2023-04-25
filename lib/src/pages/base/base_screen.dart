@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:quitanda/src/pages/cart/cart_tab.dart';
 import 'package:quitanda/src/pages/home/home_tab.dart';
+import 'package:quitanda/src/pages/profile/profile_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({Key? key}) : super(key: key);
@@ -22,10 +23,8 @@ class _BaseScreenState extends State<BaseScreen> {
         controller: pageController,
         children: [
           const HomeTab(),
-          CartTab(),
-          Container(
-            color: Colors.cyan,
-          ),
+          const ProfileTab(),
+          const CartTab(),
           Container(
             color: Colors.yellow,
           ),

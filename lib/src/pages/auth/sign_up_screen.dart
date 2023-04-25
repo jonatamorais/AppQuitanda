@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:quitanda/src/pages/auth/components/custom_text_field.dart';
+import 'package:quitanda/src/pages/common_widgets/custom_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
    SignUpScreen({Key? key}) : super(key: key);
@@ -57,16 +57,16 @@ class SignUpScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        CustomTextField(
+                        const CustomTextField(
                           icon: Icons.email,
                           label: "Email",
                         ),
-                        CustomTextField(
+                        const CustomTextField(
                           icon: Icons.lock,
                           label: "Senha",
                           isSecret: true,
                         ),
-                        CustomTextField(
+                        const CustomTextField(
                           icon: Icons.person,
                           label: "Nome",
                         ),
@@ -76,7 +76,7 @@ class SignUpScreen extends StatelessWidget {
                           inputFormatters: [phoneFormatter],
                         ),
                         CustomTextField(
-                          icon: Icons.circle,
+                          icon: Icons.list_alt,
                           label: "C.P.F",
                           inputFormatters: [cpfFormatter],
                         ),
